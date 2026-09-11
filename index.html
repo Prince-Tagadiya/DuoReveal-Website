@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DuoReveal — 3D Virtual Folding Display for MacBook | Creato4 Lab</title>
+  <meta name="description" content="DuoReveal anchors your real macOS screen into a stationary 90° spatial display in 3D world space as you move your MacBook lid. Powered by Apple SPU and Metal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <span class="brand-name">DuoReveal <span class="beta-tag">BETA</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#features">Spatial Optics</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#specs">Requirements</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Switchable CTA button: configured for Public Beta, ready for Trial or ₹99 -->
+        <a href="#download" class="cta-button">Download Beta — Free</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        <span>CREATO4 LAB • PUBLIC BETA 1.0</span>
+      </div>
+
+      <h1 class="hero-title">
+        The 3D Virtual Folding Display <br>
+        <span class="gradient-text">for your MacBook.</span>
+      </h1>
+
+      <p class="hero-lead">
+        As you tilt your MacBook lid, DuoReveal anchors your real desktop into a stationary 90° spatial plane in 3D space. Powered by hardware Apple SPU angle tracking, ScreenCaptureKit, and Metal at a buttery 120 FPS.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#download" class="btn btn-primary" id="main-cta-btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Public Beta — Free
+        </a>
+        <a href="#features" class="btn btn-glass">
+          Explore Architecture
+        </a>
+      </div>
+
+      <div class="hero-badges">
+        <span class="badge-item">✓ Apple Silicon Native (M1/M2/M3/M4)</span>
+        <span class="badge-item">✓ 120 FPS ProMotion Paced</span>
+        <span class="badge-item">✓ Zero Screen Data leaves your GPU</span>
+        <span class="badge-item">✓ 0.0% Battery Drain when lid is open</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features & Spatial Optics -->
+  <section id="features" class="section-container">
+    <div class="section-header-center">
+      <div class="tag-pill">ENGINE ARCHITECTURE</div>
+      <h2>Engineered for Visual Perfection</h2>
+      <p class="section-subtitle">A high-performance pipeline designed specifically for Apple Silicon.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+        <h3>Stationary 90° Spatial Plane</h3>
+        <p>Your screen doesn't shrink into a flat trapezoid. It stays anchored in 3D world space at native 1:1 scale at the hinge while your physical lid moves forward.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <h3>Hardware SPU Micro-Tracking</h3>
+        <p>Direct integration with Apple SPU HIDReport 7 reads real-time hinge angles with 0.01° sub-degree resolution and zero background battery drain.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        </div>
+        <h3>120 FPS Metal Mip Pipeline</h3>
+        <p>Uses an 8-level binomial filter compute pipeline to dynamically calculate depth-of-field defocus without aliasing, moiré patterns, or frame drops.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3>Zero-Battery On-Demand Capture</h3>
+        <p>Absolutely no continuous background video recording. When your MacBook is open, screen capture is 100% idle (0.0% CPU, 0.0% GPU).</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </div>
+        <h3>6 Optical Shader Variations</h3>
+        <p>Switch between Fold Ghost, Duo, Roll, Shutter, Flex, and Iris styles directly in Preferences to match your visual taste.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+        <h3>Lock Screen Layer Integration</h3>
+        <p>Renders seamlessly at raw level 2,147,483,631 to fold cleanly before macOS login and instantly recover on lid wake.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Guarantee -->
+  <section id="privacy" class="section-container">
+    <div class="privacy-box">
+      <div class="privacy-badge">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        ZERO SCREEN CONTENT LEAVES YOUR MAC
+      </div>
+      <h2>Our Ironclad Privacy Architecture</h2>
+      <p>
+        DuoReveal is engineered with a strict <strong>local-first</strong> security posture. When screen recording is active during a lid fold, the snapshot texture is passed directly into Apple's Metal GPU texture cache in local VRAM.
+      </p>
+      <div class="privacy-checklist">
+        <div>🔒 <strong>No Cloud Uploads:</strong> Pixels never leave your Mac's unified memory.</div>
+        <div>🔒 <strong>No Personal Telemetry:</strong> No keystrokes, no URLs, and no file data are ever tracked.</div>
+        <div>🔒 <strong>Cryptographic Hardware Identity:</strong> Device authorization uses a local P-256 keypair stored in macOS Keychain.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Requirements -->
+  <section id="specs" class="section-container">
+    <div class="section-header-center">
+      <div class="tag-pill">COMPATIBILITY</div>
+      <h2>System Requirements</h2>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-card">
+        <h4>Hardware</h4>
+        <p>Apple Silicon MacBook Air or MacBook Pro (M1, M2, M3, M4 series) equipped with Apple SPU hinge sensors.</p>
+      </div>
+      <div class="spec-card">
+        <h4>macOS Version</h4>
+        <p>macOS 14.0 Sonoma, macOS 15.0 Sequoia, or newer. Full Apple Silicon 64-bit native.</p>
+      </div>
+      <div class="spec-card">
+        <h4>Permissions</h4>
+        <p>Standard macOS Screen Recording (to capture desktop windows into Metal) & Accessibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Beta Section -->
+  <section id="download" class="section-container">
+    <div class="download-card">
+      <div class="download-content">
+        <span class="tag-pill">PUBLIC BETA RELEASE</span>
+        <h2>Get DuoReveal for macOS</h2>
+        <p>Experience the next generation of spatial display physics on your MacBook.</p>
+
+        <div class="download-box">
+          <a href="/download/DuoReveal-Beta.dmg" class="btn btn-primary btn-large">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Public Beta (DMG)
+          </a>
+          <span class="file-meta">macOS 14.0 Sonoma & macOS 15.0 Sequoia • Native Apple Silicon</span>
+        </div>
+
+        <!-- Gatekeeper Helper Box -->
+        <div class="gatekeeper-helper">
+          <div class="helper-header">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>First-Time Launch on macOS Sequoia</span>
+          </div>
+          <p>If macOS prompts <em>"DuoReveal was blocked to protect your Mac"</em>, simply click <strong>Open Anyway</strong> in <strong>System Settings → Privacy & Security</strong>, or paste this in Terminal:</p>
+          <div class="code-copy-box">
+            <code>xattr -cr /Applications/DuoReveal.app</code>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('xattr -cr /Applications/DuoReveal.app'); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy', 2000)">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section-container">
+    <div class="section-header-center">
+      <div class="tag-pill">FREQUENTLY ASKED QUESTIONS</div>
+      <h2>Answers to Common Questions</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>How does DuoReveal detect my MacBook hinge angle?</h3>
+        <p>DuoReveal connects to the Apple Sensor Processing Unit (SPU) over the internal IOKit HID bus (HIDReport 7). This provides 0.01° sub-degree angular precision in real time without optical cameras or battery drain.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does DuoReveal drain battery while I work?</h3>
+        <p>No. When your MacBook is open normally (≥ 90°), screen capture is 100% idle (0.0% CPU and 0.0% GPU). The Metal render loop and ScreenCaptureKit only engage the moment your lid is folded down.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why does DuoReveal ask for Screen Recording permission?</h3>
+        <p>macOS requires Screen Recording permission for any app that reads on-screen window pixels. DuoReveal uses Apple's official ScreenCaptureKit framework to capture an instantaneous single-frame snapshot into GPU memory when you close the lid.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Who created DuoReveal?</h3>
+        <p>DuoReveal was conceived, designed, and developed by <strong>Prince Tagadiya</strong> under <strong>Creato4 Lab</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>DuoReveal</h3>
+        <p>Designed and developed under <strong>Creato4 Lab</strong> by <strong>Prince Tagadiya</strong>.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#specs">Requirements</a>
+        <a href="#download">Download Beta</a>
+        <a href="mailto:support@creato4.com">Support & Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Creato4 Lab. All rights reserved. Apple, MacBook, macOS, and Metal are trademarks of Apple Inc.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
