@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#141420"/>
+    </linearGradient>
+    <linearGradient id="foldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="50%" stop-color="#4facfe"/>
+      <stop offset="100%" stop-color="#6b11ff"/>
+    </linearGradient>
+    <linearGradient id="specular" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="114" fill="url(#bgGrad)"/>
+  <rect width="510" height="510" x="1" y="1" rx="113" stroke="url(#specular)" stroke-width="2" fill="none"/>
+  
+  <!-- Outer glowing hinge aura -->
+  <path d="M128 148 C128 148, 256 188, 256 256 C256 324, 384 364, 384 364" stroke="url(#foldGrad)" stroke-width="36" stroke-linecap="round" filter="url(#glow)" opacity="0.5"/>
+
+  <!-- Upper Screen Leaf (tilted) -->
+  <path d="M140 160 C140 144, 154 132, 170 132 L342 132 C358 132, 372 144, 372 160 L356 252 C356 252, 256 268, 156 252 Z" fill="url(#foldGrad)" opacity="0.9"/>
+
+  <!-- Lower Base Leaf -->
+  <path d="M156 270 C256 286, 356 270, 356 270 L372 352 C372 368, 358 380, 342 380 L170 380 C154 380, 140 368, 140 352 Z" fill="url(#foldGrad)" opacity="0.7"/>
+
+  <!-- Hinge Specular Seam -->
+  <path d="M148 260 C220 274, 292 274, 364 260" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+</svg>

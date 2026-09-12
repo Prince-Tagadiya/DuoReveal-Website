@@ -8,6 +8,9 @@
   <meta property="og:title" content="DuoReveal — Your Screen, Floating in Space">
   <meta property="og:description" content="The 3D virtual folding display for MacBook. Direct hardware sensor tracking, 120 FPS fluid rendering, zero battery drain.">
   <meta name="theme-color" content="#030305">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -220,8 +223,8 @@
           </div>
           <div class="window-controls">
             <div class="theme-switcher-pills">
-              <button class="theme-pill active" id="screenshot-dark-btn" onclick="setScreenshotMode('dark')">Dark</button>
-              <button class="theme-pill" id="screenshot-light-btn" onclick="setScreenshotMode('light')">Light</button>
+              <button class="theme-pill active" id="screenshot-appearance-btn" onclick="setScreenshotView('appearance')">Appearance</button>
+              <button class="theme-pill" id="screenshot-lid-btn" onclick="setScreenshotView('lid')">Lid Dynamics</button>
             </div>
           </div>
         </div>

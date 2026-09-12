@@ -107,21 +107,27 @@ if (hero) {
   }, { passive: true });
 }
 
-/* ── App Studio Screenshot Theme Switcher ────────────────────── */
-function setScreenshotMode(mode) {
+/* ── App Studio Screenshot View Switcher ─────────────────────── */
+function setScreenshotView(view) {
   const img = document.getElementById('app-screenshot-img');
-  const darkBtn = document.getElementById('screenshot-dark-btn');
-  const lightBtn = document.getElementById('screenshot-light-btn');
+  const appBtn = document.getElementById('screenshot-appearance-btn');
+  const lidBtn = document.getElementById('screenshot-lid-btn');
   if (!img) return;
-  if (mode === 'light') {
-    img.src = 'assets/settings_light_mode.png';
-    darkBtn?.classList.remove('active');
-    lightBtn?.classList.add('active');
+  if (view === 'lid') {
+    img.src = 'assets/settings_lid_dynamics.png';
+    img.alt = 'DuoReveal Native macOS App Hinge Dynamics Calibration';
+    appBtn?.classList.remove('active');
+    lidBtn?.classList.add('active');
   } else {
     img.src = 'assets/settings_dark_mode.png';
-    lightBtn?.classList.remove('active');
-    darkBtn?.classList.add('active');
+    img.alt = 'DuoReveal Native macOS App Settings Studio Appearance';
+    lidBtn?.classList.remove('active');
+    appBtn?.classList.add('active');
   }
+}
+
+function setScreenshotMode(mode) {
+  setScreenshotView(mode === 'light' ? 'lid' : 'appearance');
 }
 
 /* ── Theme Switcher (Dark & Light Mode) ─────────────────────── */
