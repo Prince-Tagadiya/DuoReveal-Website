@@ -26,6 +26,7 @@
       </a>
 
       <nav class="nav-menu">
+        <a href="#compare">Compare</a>
         <a href="#features">Spatial Optics</a>
         <a href="#privacy">Privacy</a>
         <a href="#specs">Requirements</a>
@@ -72,6 +73,118 @@
         <span class="badge-item">✓ Zero Screen Data leaves your GPU</span>
         <span class="badge-item">✓ 0.0% Battery Drain when lid is open</span>
       </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section id="compare" class="section-container compare-section">
+    <div class="section-header-center">
+      <div class="tag-pill">WHY DUOREVEAL</div>
+      <h2>Built Different.<br><span class="gradient-text">Not Just Another Fold App.</span></h2>
+      <p class="section-subtitle">Every other folding display app on Mac is a continuous screen recorder in disguise.<br>DuoReveal is engineered from scratch — on-demand, hardware-native, and mathematically precise.</p>
+    </div>
+
+    <!-- Highlight cards -->
+    <div class="compare-highlights">
+      <div class="compare-highlight-card compare-highlight-bad">
+        <div class="highlight-icon">🔴</div>
+        <h4>Other Apps</h4>
+        <ul>
+          <li>Continuous screen recording 24/7</li>
+          <li>8–15% extra battery drain per hour</li>
+          <li>CPU &amp; GPU always spinning</li>
+          <li>One fixed effect, no customization</li>
+          <li>Breaks under fullscreen apps</li>
+          <li>Flat uncalibrated trapezoid</li>
+          <li>Private window data held in memory</li>
+        </ul>
+      </div>
+      <div class="compare-divider">
+        <span>VS</span>
+      </div>
+      <div class="compare-highlight-card compare-highlight-good">
+        <div class="highlight-icon">🟢</div>
+        <h4>DuoReveal</h4>
+        <ul>
+          <li>100% dormant when lid is open — zero idle drain</li>
+          <li><strong>0.0% battery drain</strong> during normal use</li>
+          <li>CPU &amp; GPU: completely idle until you tilt</li>
+          <li>6 Metal shader engines + live preference studio</li>
+          <li>Works over fullscreen, Mission Control &amp; Lock Screen</li>
+          <li>True projective homography — straight lines stay straight</li>
+          <li>Frame cache wiped instantly after fold — zero persistence</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Detailed comparison table -->
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="col-feature">Feature</th>
+            <th class="col-other">Other Folding Apps</th>
+            <th class="col-duo">DuoReveal <span class="tag-best">Best</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Screen Capture Mode</strong><br><small>How your screen is read</small></td>
+            <td class="cell-bad">Continuous background recording — capturing at 30–120 FPS even when you're just working normally</td>
+            <td class="cell-good"><strong>Single on-demand snapshot</strong> — taken only at the moment you physically fold the lid. Zero recording otherwise.</td>
+          </tr>
+          <tr class="row-alt">
+            <td><strong>Battery Drain</strong><br><small>Impact on your MacBook</small></td>
+            <td class="cell-bad">⚡ 8–15% additional battery drain per hour from constant ScreenCaptureKit buffers and background GPU threads</td>
+            <td class="cell-good">✅ <strong>0.0% battery drain</strong> when lid is open. Metal render loop fully suspended. SPU sensor uses &lt;0.01 mW.</td>
+          </tr>
+          <tr>
+            <td><strong>Optical Geometry</strong><br><small>How the screen is folded</small></td>
+            <td class="cell-bad">Naive flat trapezoid warp — straight lines in your UI curve and bend unnaturally, making it look fake</td>
+            <td class="cell-good"><strong>Inverse projective homography</strong> anchored to the physical hinge. Straight lines stay laser-straight. Real 3D geometry.</td>
+          </tr>
+          <tr class="row-alt">
+            <td><strong>Hinge Tracking</strong><br><small>How the angle is detected</small></td>
+            <td class="cell-bad">Software polling at 10–30 Hz via CoreMotion — laggy, stuttery, and inaccurate</td>
+            <td class="cell-good"><strong>Apple SPU HIDReport 7</strong> — direct IOKit bus, 0.01° sub-degree resolution, 0 ms latency, native hardware</td>
+          </tr>
+          <tr>
+            <td><strong>Customization</strong><br><small>Control over the effect</small></td>
+            <td class="cell-bad">Hardcoded — one look, zero sliders, no way to tune perspective, blur, or shadow intensity</td>
+            <td class="cell-good"><strong>Live Preference Studio</strong>: 6 shader modes, Perspective slider (0.1–2.0×), Blur depth, Crease Shadow, Tilt Speed</td>
+          </tr>
+          <tr class="row-alt">
+            <td><strong>Fullscreen Compatibility</strong><br><small>Works over all apps?</small></td>
+            <td class="cell-bad">Black bars, broken layouts, or invisible under fullscreen apps, Mission Control, and Lock Screen</td>
+            <td class="cell-good">Renders at <strong>window level 2,147,483,631</strong> — floats seamlessly over Xcode, Final Cut, Lock Screen, and Mission Control</td>
+          </tr>
+          <tr>
+            <td><strong>Privacy &amp; Data Safety</strong><br><small>Where your pixels go</small></td>
+            <td class="cell-bad">Background video buffer held in memory for hours. Potentially logs window content across many frames.</td>
+            <td class="cell-good"><strong>Zero persistence</strong> — frame texture lives only in GPU VRAM for the fold duration. Wiped immediately after. Nothing on disk.</td>
+          </tr>
+          <tr class="row-alt">
+            <td><strong>Depth-of-Field Optics</strong><br><small>How the fold looks</small></td>
+            <td class="cell-bad">Flat uniform opacity fade — no depth simulation, no upper-edge defocus, no optical realism</td>
+            <td class="cell-good"><strong>height³·⁵ defocus curve</strong> — bottom dock stays razor-sharp, upper edge softly dissolves exactly like a shallow-aperture camera lens</td>
+          </tr>
+          <tr>
+            <td><strong>CPU / Thermal Impact</strong><br><small>Effect on your Mac's heat</small></td>
+            <td class="cell-bad">Sustained background CPU load causes fan spin and noticeable chassis heat on MacBook Pro models</td>
+            <td class="cell-good"><strong>0.0% CPU</strong> when idle. Even during an active fold, GPU-only Metal pipeline has zero CPU threads spinning.</td>
+          </tr>
+          <tr class="row-alt">
+            <td><strong>Dynamic Notch HUD</strong><br><small>Visual feedback</small></td>
+            <td class="cell-bad">No HUD — invisible background app or static detached menu bar item with no live readout</td>
+            <td class="cell-good"><strong>Dynamic Notch animation</strong> — blooms out from under the camera notch on &gt;1–2° lid movement with live degree readout</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="compare-cta">
+      <p>Ready to experience the difference?</p>
+      <a href="#download" class="btn btn-primary">Download DuoReveal — Free Beta</a>
     </div>
   </section>
 
@@ -185,7 +298,7 @@
         <p>Experience the next generation of spatial display physics on your MacBook.</p>
 
         <div class="download-box">
-          <a href="/download/DuoReveal-Beta.dmg" class="btn btn-primary btn-large">
+          <a href="https://github.com/Prince-Tagadiya/DuoReveal-Website/releases/download/v1.0-beta/DuoReveal-1.0-Beta.dmg" class="btn btn-primary btn-large" download="DuoReveal-Beta.dmg">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             Download Public Beta (DMG)
           </a>
