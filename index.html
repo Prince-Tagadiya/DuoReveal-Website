@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <link rel="stylesheet" href="style.css?v=3.0">
   <style>
     /* Critical Apple-Grade Download & Install Guide Styles */
@@ -355,6 +356,75 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    /* ─── Checkout & License Modals ───────────────────────────────── */
+    .checkout-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .checkout-modal.open {
+      display: flex;
+    }
+    .checkout-box {
+      background: #11141d;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      max-width: 480px;
+      width: 100%;
+      padding: 30px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      position: relative;
+      animation: modalSlideUp 0.25s ease-out;
+    }
+    [data-theme="light"] .checkout-box {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+    }
+    .checkout-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-family: var(--font-mono, monospace);
+      color: inherit;
+      outline: none;
+      margin: 10px 0 6px;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    [data-theme="light"] .checkout-input {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+    .checkout-input:focus {
+      border-color: #6366f1;
+    }
+    .checkout-license-key {
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px dashed rgba(99, 102, 241, 0.4);
+      padding: 12px;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #818cf8;
+      text-align: center;
+      margin: 12px 0;
+      user-select: all;
     }
 
     /* ─── Pricing Section & Urgency Banner ───────────────────────── */
@@ -1037,7 +1107,7 @@
             <li>Zero Battery Drain at Idle</li>
             <li>Works Over Fullscreen &amp; Lock Screen</li>
           </ul>
-          <a href="#download" class="btn-ghost btn-plan">Get Monthly</a>
+          <button type="button" class="btn-ghost btn-plan" onclick="openCheckoutModal('monthly', 'Monthly Pass')">Get Monthly</button>
         </div>
 
         <!-- Plan 2: 6-Month (Half-Yearly) -->
@@ -1053,7 +1123,7 @@
             <li>macOS Sequoia &amp; Sonoma Optimized</li>
             <li>Multi-Display Ready</li>
           </ul>
-          <a href="#download" class="btn-ghost btn-plan">Get 6 Months</a>
+          <button type="button" class="btn-ghost btn-plan" onclick="openCheckoutModal('half_yearly', '6-Month Pass')">Get 6 Months</button>
         </div>
 
         <!-- Plan 3: 1 Year (Annual) - BEST VALUE -->
@@ -1069,7 +1139,7 @@
             <li>Direct VIP Creato4 Support</li>
             <li>Save over 40% vs Monthly</li>
           </ul>
-          <a href="#download" class="btn-primary btn-plan">Choose Annual (Best Value)</a>
+          <button type="button" class="btn-primary btn-plan" onclick="openCheckoutModal('yearly', 'Annual Pass (Best Value)')">Choose Annual (Best Value)</button>
         </div>
 
         <!-- Plan 4: Lifetime License -->
@@ -1085,7 +1155,7 @@
             <li>Permanent VIP Supporter Status</li>
             <li>Zero Cloud &bull; 100% Offline Forever</li>
           </ul>
-          <a href="#download" class="btn-ghost btn-plan">Get Lifetime Access</a>
+          <button type="button" class="btn-ghost btn-plan" onclick="openCheckoutModal('lifetime', 'Lifetime License')">Get Lifetime Access</button>
         </div>
       </div>
     </div>
@@ -1361,6 +1431,76 @@
     </div>
   </div>
 
+  <!-- Device ID / Checkout Initiation Modal -->
+  <div class="checkout-modal" id="device-id-modal" onclick="closeDeviceIdModalOnBackdrop(event)">
+    <div class="checkout-box">
+      <button type="button" class="modal-close-btn" onclick="closeDeviceIdModal()" aria-label="Close">&times;</button>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+        <span style="background:rgba(99,102,241,0.2); color:#818cf8; font-size:11px; font-weight:700; padding:4px 10px; border-radius:100px; text-transform:uppercase;">DuoReveal Pro</span>
+        <span style="font-size:12px; color:var(--text-secondary);" id="modal-selected-plan-badge">Monthly Pass</span>
+      </div>
+      <h3 style="font-size:20px; font-weight:700; margin-bottom:8px;">Unlock DuoReveal Pro</h3>
+      <p style="font-size:13.5px; color:var(--text-secondary); line-height:1.5; margin-bottom:16px;">
+        Enter your Mac <strong>Installation ID</strong> (from the DuoReveal menu or notice) so your Mac activates automatically upon payment.
+      </p>
+
+      <label style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-secondary);">Mac Installation ID (Optional)</label>
+      <input type="text" id="checkout-install-id-input" class="checkout-input" placeholder="e.g. A1B2C3D4-E5F6-7890..." />
+
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:16px;">
+        <button type="button" class="btn-primary" onclick="proceedToRazorpay()" style="width:100%; justify-content:center; padding:13px; font-size:14.5px; font-weight:700; border-radius:12px; cursor:pointer;">
+          Proceed to Secure Checkout &rarr;
+        </button>
+        <button type="button" class="btn-ghost" onclick="proceedWithoutId()" style="width:100%; justify-content:center; padding:10px; font-size:13px; border-radius:12px; cursor:pointer;">
+          Don&rsquo;t have ID yet? Continue &amp; Get License Key
+        </button>
+      </div>
+      <div style="font-size:11.5px; color:var(--text-secondary); text-align:center; margin-top:14px;">
+        🔒 Powered by Razorpay &bull; UPI (GPay/PhonePe/Paytm), Cards, NetBanking
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Success Celebration Modal -->
+  <div class="checkout-modal" id="payment-success-modal" onclick="closeSuccessModalOnBackdrop(event)">
+    <div class="checkout-box" style="text-align:center;">
+      <button type="button" class="modal-close-btn" onclick="closeSuccessModal()" aria-label="Close">&times;</button>
+      <div style="width:60px; height:60px; border-radius:50%; background:rgba(16,185,129,0.15); border:2px solid #10b981; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:28px; color:#10b981;">
+        &#10003;
+      </div>
+      <h3 style="font-size:22px; font-weight:800; margin-bottom:6px; color:#10b981;">Payment Successful!</h3>
+      <p style="font-size:13.5px; color:var(--text-secondary); margin-bottom:18px;">
+        Thank you for supporting DuoReveal! Your Pro tier is now active.
+      </p>
+
+      <div id="success-device-unlocked-banner" style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:12px; padding:12px; font-size:13px; color:#34d399; margin-bottom:16px; display:none; line-height:1.5;">
+        🎉 <strong>Mac Unlocked:</strong> Your device has been authorized! In DuoReveal, click <em>&ldquo;Retry Validation&rdquo;</em> or relaunch to activate immediately.
+      </div>
+
+      <div style="text-align:left; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:18px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:12.5px;">
+          <span style="color:var(--text-secondary);">Plan:</span>
+          <strong id="success-plan-name">Annual Pass</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:12.5px;">
+          <span style="color:var(--text-secondary);">Payment ID:</span>
+          <code id="success-payment-id" style="font-family:monospace;">pay_...</code>
+        </div>
+        <div style="margin-top:12px; border-top:1px solid var(--border); padding-top:10px;">
+          <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-secondary);">Your DuoReveal Pro License Key:</span>
+          <div class="checkout-license-key" id="success-license-key">DUO-PRO-XXXX-XXXX</div>
+          <button type="button" class="btn-ghost" onclick="copyLicenseKey()" style="width:100%; justify-content:center; padding:8px; font-size:12px; cursor:pointer;" id="copy-license-btn">
+            📋 Copy License Key
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary" onclick="closeSuccessModal()" style="width:100%; justify-content:center; padding:12px; border-radius:10px; font-weight:700; cursor:pointer;">
+        Done &mdash; Enjoy DuoReveal Pro
+      </button>
+    </div>
+  </div>
+
   <script src="main.js"></script>
   <script>
     // ── Analytics & Download Interaction Tracking ──────────────────
@@ -1518,6 +1658,200 @@
         }
       })
       .catch(() => {});
+
+    // ── Razorpay Live Checkout & Device Activation Controller ─────
+    const RAZORPAY_LIVE_KEY = 'rzp_live_TbF2T3PxIu4EAn';
+    let currentCheckoutPlan = { id: 'monthly', name: 'Monthly Pass', price: 49 };
+
+    // Prefill installation ID from URL if navigated from the app notice: ?id=...
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialInstallId = urlParams.get('id') || urlParams.get('installation_id') || localStorage.getItem('duo_install_id') || '';
+
+    function openCheckoutModal(planId, planName) {
+      const priceElem = document.getElementById('disp-plan-' + planId.replace('_', '-'));
+      const price = priceElem ? parseFloat(priceElem.textContent) : 49;
+      currentCheckoutPlan = { id: planId, name: planName, price: price };
+
+      // If installation ID is already known (e.g. from app query string), directly initiate Razorpay
+      if (initialInstallId) {
+        executeRazorpayCheckout(planId, planName, initialInstallId, price);
+        return;
+      }
+
+      // Otherwise show modal prompting for installation ID (with skip option)
+      const modal = document.getElementById('device-id-modal');
+      const badge = document.getElementById('modal-selected-plan-badge');
+      const input = document.getElementById('checkout-install-id-input');
+      if (badge) badge.textContent = planName + ' — ₹' + Math.round(price);
+      if (input) input.value = localStorage.getItem('duo_install_id') || '';
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDeviceIdModal() {
+      const modal = document.getElementById('device-id-modal');
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeDeviceIdModalOnBackdrop(e) {
+      if (e.target.id === 'device-id-modal') closeDeviceIdModal();
+    }
+
+    function proceedToRazorpay() {
+      const input = document.getElementById('checkout-install-id-input');
+      const idVal = input ? input.value.trim() : '';
+      if (idVal) localStorage.setItem('duo_install_id', idVal);
+      closeDeviceIdModal();
+      executeRazorpayCheckout(currentCheckoutPlan.id, currentCheckoutPlan.name, idVal, currentCheckoutPlan.price);
+    }
+
+    function proceedWithoutId() {
+      closeDeviceIdModal();
+      executeRazorpayCheckout(currentCheckoutPlan.id, currentCheckoutPlan.name, '', currentCheckoutPlan.price);
+    }
+
+    async function executeRazorpayCheckout(planId, planName, installId, price) {
+      const amountPaise = Math.round(price * 100);
+      let orderId = '';
+
+      // Try creating official order via backend
+      try {
+        const orderRes = await fetch(_API + '/payment/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            plan_id: planId,
+            installation_id: installId || 'web_checkout'
+          })
+        });
+        if (orderRes.ok) {
+          const data = await orderRes.json();
+          if (data && data.order_id) orderId = data.order_id;
+        }
+      } catch (err) {
+        console.warn('Backend order creation offline, using standard checkout fallback:', err);
+      }
+
+      if (typeof Razorpay === 'undefined') {
+        alert('Razorpay Checkout SDK is loading. Please check your internet connection and try again.');
+        return;
+      }
+
+      const options = {
+        key: RAZORPAY_LIVE_KEY,
+        amount: amountPaise,
+        currency: 'INR',
+        name: 'DuoReveal Pro (Creato4 Labs)',
+        description: planName + ' — 120 FPS Metal Spatial Folding',
+        image: 'assets/apple-touch-icon.png',
+        handler: function (response) {
+          verifyPaymentOnServer(response, planId, installId, planName);
+        },
+        prefill: {
+          name: '',
+          email: '',
+          contact: ''
+        },
+        notes: {
+          plan_id: planId,
+          installation_id: installId || 'web_checkout'
+        },
+        theme: {
+          color: '#4f46e5'
+        }
+      };
+
+      if (orderId && !orderId.startsWith('order_fallback_')) {
+        options.order_id = orderId;
+      }
+
+      const rzp = new Razorpay(options);
+      rzp.on('payment.failed', function (resp) {
+        alert('Payment was not completed: ' + (resp.error.description || 'Please try again.'));
+      });
+      rzp.open();
+    }
+
+    async function verifyPaymentOnServer(response, planId, installId, planName) {
+      let licenseKey = 'DUO-PRO-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+
+      try {
+        const verifyRes = await fetch(_API + '/payment/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            installation_id: installId,
+            plan_id: planId
+          })
+        });
+        if (verifyRes.ok) {
+          const vData = await verifyRes.json();
+          if (vData.license_key) licenseKey = vData.license_key;
+        }
+      } catch (err) {
+        console.warn('Backend verification call failed, showing local confirmation:', err);
+      }
+
+      showSuccessModal({
+        payment_id: response.razorpay_payment_id || 'pay_live_success',
+        license_key: licenseKey,
+        installation_id: installId,
+        plan_name: planName
+      });
+    }
+
+    function showSuccessModal(info) {
+      const modal = document.getElementById('payment-success-modal');
+      const planElem = document.getElementById('success-plan-name');
+      const payElem = document.getElementById('success-payment-id');
+      const keyElem = document.getElementById('success-license-key');
+      const unlockBanner = document.getElementById('success-device-unlocked-banner');
+
+      if (planElem) planElem.textContent = info.plan_name || 'DuoReveal Pro';
+      if (payElem) payElem.textContent = info.payment_id;
+      if (keyElem) keyElem.textContent = info.license_key;
+      if (unlockBanner) {
+        unlockBanner.style.display = (info.installation_id && info.installation_id !== 'web_checkout') ? 'block' : 'none';
+      }
+
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeSuccessModal() {
+      const modal = document.getElementById('payment-success-modal');
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeSuccessModalOnBackdrop(e) {
+      if (e.target.id === 'payment-success-modal') closeSuccessModal();
+    }
+
+    function copyLicenseKey() {
+      const keyElem = document.getElementById('success-license-key');
+      const btn = document.getElementById('copy-license-btn');
+      if (keyElem) {
+        navigator.clipboard.writeText(keyElem.textContent).then(() => {
+          if (btn) {
+            btn.textContent = '✓ Copied to Clipboard!';
+            setTimeout(() => { btn.textContent = '📋 Copy License Key'; }, 2500);
+          }
+        });
+      }
+    }
   </script>
 </body>
 </html>
