@@ -6,7 +6,7 @@
   <title>DuoReveal — Your Screen, Floating in Space</title>
   <meta name="description" content="DuoReveal transforms your MacBook into a spatial 3D display as you tilt the lid. Hardware-native. Zero battery drain. Mathematically precise. Built for Apple Silicon.">
   <meta property="og:title" content="DuoReveal — Your Screen, Floating in Space">
-  <meta property="og:description" content="The 3D virtual folding display for MacBook. Hardware SPU tracking, 120 FPS Metal rendering, zero battery drain.">
+  <meta property="og:description" content="The 3D virtual folding display for MacBook. Direct hardware sensor tracking, 120 FPS fluid rendering, zero battery drain.">
   <meta name="theme-color" content="#030305">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,12 @@
         <a href="#compare">Compare</a>
         <a href="#specs">Specs</a>
       </div>
-      <a href="#download" class="nav-cta">Download — Free</a>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="#download" class="nav-cta">Download — Free</a>
+      </div>
     </div>
   </nav>
 
@@ -162,8 +167,8 @@
         </div>
         <div class="bento-card bento-medium bento-glow">
           <div class="bento-tag">HARDWARE NATIVE</div>
-          <h3>0.01&deg; precision.<br>0 ms latency.</h3>
-          <p>Direct Apple SPU HIDReport 7 on the IOKit bus. Not CoreMotion. Not polling. The actual hardware sensor.</p>
+          <h3>Sub-degree precision.<br>Zero latency.</h3>
+          <p>Precision hardware calibration engineered directly for your MacBook. Instant response with zero background battery impact.</p>
           <div class="precision-dial">
             <svg viewBox="0 0 100 60" width="120" height="72">
               <path d="M10 55 A 40 40 0 0 1 90 55" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="6" stroke-linecap="round"/>
@@ -203,21 +208,21 @@
           <div class="step-num">01</div>
           <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></div>
           <h3>Lid moves</h3>
-          <p>Apple SPU detects hinge angle change at 0.01&deg; resolution via hardware interrupt. Zero software polling.</p>
+          <p>Physical hinge sensors detect physical lid tilt instantaneously. Instant response with zero polling.</p>
         </div>
         <div class="step-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="step-card">
           <div class="step-num">02</div>
           <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
           <h3>Instant snapshot</h3>
-          <p>ScreenCaptureKit takes a single-frame snapshot into GPU memory. One instantaneous capture at the fold moment.</p>
+          <p>An instantaneous one-shot screen snapshot into GPU memory. Zero background capture while you work.</p>
         </div>
         <div class="step-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
         <div class="step-card">
           <div class="step-num">03</div>
           <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-          <h3>Metal renders</h3>
-          <p>120 FPS Metal pipeline applies inverse projective homography, defocus, and crease shadow &mdash; anchoring your screen in 3D.</p>
+          <h3>Fluid 3D Render</h3>
+          <p>120 FPS graphics engine renders authentic perspective, depth defocus, and shadow &mdash; anchoring your screen in 3D space.</p>
         </div>
       </div>
       <div class="physics-card" data-reveal data-reveal-delay="3">
@@ -258,7 +263,7 @@
         <div class="compare-row"><div class="cr-feature"><strong>Screen Capture</strong><small>How pixels are read</small></div><div class="cr-other"><span class="cr-x">&#x2715;</span> Continuous 60&ndash;120 FPS stream, running 24/7 even while you work</div><div class="cr-duo"><span class="cr-check">&#x2713;</span> <strong>Single on-demand snapshot</strong> &mdash; taken only the instant you fold. Zero at idle.</div></div>
         <div class="compare-row"><div class="cr-feature"><strong>Battery Impact</strong><small>Real-world drain</small></div><div class="cr-other"><span class="cr-x">&#x2715;</span> 8&ndash;15% extra drain per hour from persistent GPU buffers</div><div class="cr-duo"><span class="cr-check">&#x2713;</span> <strong>0.0% battery drain</strong> when lid is open. Metal loop suspended.</div></div>
         <div class="compare-row"><div class="cr-feature"><strong>Geometry Engine</strong><small>Visual accuracy</small></div><div class="cr-other"><span class="cr-x">&#x2715;</span> Flat trapezoid warp &mdash; straight UI lines curve unnaturally</div><div class="cr-duo"><span class="cr-check">&#x2713;</span> <strong>Inverse projective homography</strong> &mdash; straight lines stay straight</div></div>
-        <div class="compare-row"><div class="cr-feature"><strong>Hinge Tracking</strong><small>Angle detection</small></div><div class="cr-other"><span class="cr-x">&#x2715;</span> CoreMotion software polling at 10&ndash;30 Hz &mdash; laggy and inaccurate</div><div class="cr-duo"><span class="cr-check">&#x2713;</span> <strong>Apple SPU HIDReport 7</strong> &mdash; IOKit hardware bus, 0.01&deg;, 0 ms</div></div>
+        <div class="compare-row"><div class="cr-feature"><strong>Hinge Tracking</strong><small>Angle detection</small></div><div class="cr-other"><span class="cr-x">&#x2715;</span> Inaccurate software polling &mdash; laggy, delayed, and drains battery</div><div class="cr-duo"><span class="cr-check">&#x2713;</span> <strong>Direct Hardware Tracking</strong> &mdash; Instant response, sub-degree precision, 0 ms lag</div></div>
         <div class="compare-row"><div class="cr-feature"><strong>Customization</strong><small>User control</small></div><div class="cr-other"><span class="cr-x">&#x2715;</span> Hardcoded single look &mdash; no perspective, blur, or shadow control</div><div class="cr-duo"><span class="cr-check">&#x2713;</span> <strong>Live Preference Studio</strong> &mdash; 6 shaders, perspective, blur, shadow, tilt speed</div></div>
         <div class="compare-row"><div class="cr-feature"><strong>Fullscreen Apps</strong><small>Compatibility</small></div><div class="cr-other"><span class="cr-x">&#x2715;</span> Black bars or invisible under fullscreen apps and Lock Screen</div><div class="cr-duo"><span class="cr-check">&#x2713;</span> Window level <strong>2,147,483,631</strong> &mdash; floats over everything</div></div>
         <div class="compare-row"><div class="cr-feature"><strong>Privacy</strong><small>Where pixels go</small></div><div class="cr-other"><span class="cr-x">&#x2715;</span> Background video buffer held for hours in memory</div><div class="cr-duo"><span class="cr-check">&#x2713;</span> <strong>VRAM only</strong> &mdash; wiped immediately on fold complete. Nothing on disk.</div></div>
@@ -305,7 +310,7 @@
       <div class="section-label" data-reveal>COMPATIBILITY</div>
       <h2 class="section-title" data-reveal data-reveal-delay="1">System Requirements</h2>
       <div class="specs-grid" data-reveal data-reveal-delay="2">
-        <div class="spec-item"><div class="spec-icon">&#x1F4BB;</div><h4>Hardware</h4><p>Apple Silicon MacBook Air or MacBook Pro with Apple SPU hinge sensors &mdash; M1, M2, M3, or M4 chip series.</p></div>
+        <div class="spec-item"><div class="spec-icon">&#x1F4BB;</div><h4>Hardware</h4><p>Apple Silicon MacBook Air or MacBook Pro &mdash; M1, M2, M3, or M4 chip series.</p></div>
         <div class="spec-item"><div class="spec-icon">&#x1F5A5;&#xFE0F;</div><h4>macOS Version</h4><p>macOS 14.0 Sonoma, macOS 15.0 Sequoia, or newer. Full Apple Silicon 64-bit native binary.</p></div>
         <div class="spec-item"><div class="spec-icon">&#x1F510;</div><h4>Permissions</h4><p>Standard Screen Recording permission and Accessibility access for the fold rendering pipeline.</p></div>
       </div>
@@ -317,7 +322,7 @@
       <div class="section-label" data-reveal>FAQ</div>
       <h2 class="section-title" data-reveal data-reveal-delay="1">Questions, answered.</h2>
       <div class="faq-list" data-reveal data-reveal-delay="2">
-        <details class="faq-item"><summary>How does DuoReveal detect my MacBook hinge angle?</summary><p>DuoReveal connects directly to the Apple Sensor Processing Unit (SPU) over the internal IOKit HID bus using HIDReport type 7. This gives 0.01&deg; sub-degree precision with 0 ms latency &mdash; no software polling, no battery drain, no CoreMotion approximation.</p></details>
+        <details class="faq-item"><summary>How does DuoReveal detect my MacBook hinge angle?</summary><p>DuoReveal integrates directly with your MacBook's native physical hinge hardware sensors. This enables instant sub-degree precision with zero perceptible latency &mdash; without continuous software polling, and with zero background battery drain.</p></details>
         <details class="faq-item"><summary>Does it drain battery while I work normally?</summary><p>No. When your MacBook lid is open at &ge;90&deg;, DuoReveal is completely dormant &mdash; 0.0% CPU, 0.0% GPU. The Metal render loop and ScreenCaptureKit only activate at the exact moment you fold the lid past the threshold angle.</p></details>
         <details class="faq-item"><summary>Why does it need Screen Recording permission?</summary><p>macOS requires Screen Recording permission for any app that reads on-screen pixels. DuoReveal uses Apple&rsquo;s official ScreenCaptureKit to capture a single instantaneous snapshot into GPU memory at fold time &mdash; not a streaming video, not a recording.</p></details>
         <details class="faq-item"><summary>Does it work with fullscreen apps?</summary><p>Yes. DuoReveal renders at macOS window level 2,147,483,631 &mdash; the highest possible value. It appears seamlessly over any fullscreen app, Mission Control, and even the macOS Lock Screen.</p></details>

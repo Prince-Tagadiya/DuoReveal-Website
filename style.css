@@ -6,6 +6,8 @@
   --bg-surface: #0d0d10;
   --bg-card: #111114;
   --bg-card-hover: #18181c;
+  --nav-bg: rgba(3,3,5,0.7);
+  --nav-bg-scrolled: rgba(3,3,5,0.92);
   --border: rgba(255,255,255,0.07);
   --border-light: rgba(255,255,255,0.12);
   --text: #f2f2f7;
@@ -23,6 +25,22 @@
   --shadow-card: 0 0 0 1px rgba(255,255,255,0.06), 0 8px 32px rgba(0,0,0,0.4);
   --shadow-glow: 0 0 40px rgba(99,102,241,0.25);
   --max-w: 1100px;
+}
+
+[data-theme="light"] {
+  --bg: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f3f5;
+  --nav-bg: rgba(248,249,250,0.8);
+  --nav-bg-scrolled: rgba(255,255,255,0.95);
+  --border: rgba(0,0,0,0.08);
+  --border-light: rgba(0,0,0,0.14);
+  --text: #1a1a1e;
+  --text-secondary: #5f6368;
+  --text-dim: #80868b;
+  --shadow-card: 0 0 0 1px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow: 0 0 30px rgba(99,102,241,0.15);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -65,12 +83,12 @@ img { display: block; max-width: 100%; }
 /* ─── Nav ─────────────────────────────────────────────────────── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  background: rgba(3,3,5,0.7);
+  background: var(--nav-bg);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border);
-  transition: background 0.3s;
+  transition: background 0.3s, border-color 0.3s;
 }
-.nav.scrolled { background: rgba(3,3,5,0.92); }
+.nav.scrolled { background: var(--nav-bg-scrolled); }
 .nav-inner {
   max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
   height: 60px; display: flex; align-items: center; gap: 32px;
@@ -97,6 +115,33 @@ img { display: block; max-width: 100%; }
   transition: color 0.15s, background 0.15s;
 }
 .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.theme-toggle-btn:hover {
+  background: rgba(255,255,255,0.12);
+  color: var(--text);
+  transform: scale(1.06);
+}
+
 .nav-cta {
   display: inline-flex; align-items: center;
   font-size: 13px; font-weight: 600; color: #fff;
@@ -777,4 +822,89 @@ img { display: block; max-width: 100%; }
   .features-grid { grid-template-columns: 1fr; }
   .footer-top { flex-direction: column; }
   .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ─── Light Mode Theme Specifics ─────────────────────────────── */
+[data-theme="light"] .bento-dark {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+[data-theme="light"] .bento-glass {
+  background: rgba(0,0,0,0.02);
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .stat-num {
+  background: linear-gradient(135deg, #111827 0%, #4b5563 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .hero-pill {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.1);
+  color: var(--text-secondary);
+}
+[data-theme="light"] .compare-wrap {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+[data-theme="light"] .compare-row:hover {
+  background: rgba(0,0,0,0.02);
+}
+[data-theme="light"] .feat-card {
+  background: #ffffff;
+}
+[data-theme="light"] .feat-card:hover {
+  background: #f8f9fa;
+}
+[data-theme="light"] .features-grid {
+  background: rgba(0,0,0,0.08);
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .spec-item {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .privacy-item {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .faq-item {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .step-card {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .physics-card {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .formula-block {
+  background: #f1f3f5;
+  border-color: rgba(0,0,0,0.08);
+  color: #1a1a1e;
+}
+[data-theme="light"] .code-row {
+  background: #eef1f5;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .gatekeeper-note {
+  background: #f8f9fa;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .copy-btn {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.12);
+  color: #1a1a1e;
+}
+[data-theme="light"] .theme-toggle-btn {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.1);
+  color: #1a1a1e;
+}
+[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(0,0,0,0.1);
 }
