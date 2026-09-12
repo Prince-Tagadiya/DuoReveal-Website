@@ -356,6 +356,180 @@
       height: auto;
       display: block;
     }
+
+    /* ─── Pricing Section & Urgency Banner ───────────────────────── */
+    .pricing-section {
+      position: relative;
+      padding: 80px 0 60px;
+    }
+    .pricing-urgency-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.12) 0%, rgba(245, 158, 11, 0.12) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 16px;
+      padding: 16px 24px;
+      max-width: 860px;
+      margin: 0 auto 36px;
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.12);
+      flex-wrap: wrap;
+    }
+    [data-theme="light"] .pricing-urgency-banner {
+      background: linear-gradient(90deg, #fff7ed 0%, #fef3c7 100%);
+      border-color: #fbd38d;
+    }
+    .pub-flame {
+      font-size: 24px;
+      animation: flameBounce 1.5s infinite ease-in-out;
+    }
+    @keyframes flameBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2) rotate(-5deg); }
+    }
+    .pub-text {
+      flex: 1;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .pub-text strong {
+      color: #f59e0b;
+      display: block;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+    .pub-badge {
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #f59e0b;
+      color: #000;
+      white-space: nowrap;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(12px);
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+    [data-theme="light"] .pricing-card {
+      background: #ffffff;
+      border-color: #e5e7eb;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+    .pricing-card.featured {
+      background: linear-gradient(180deg, rgba(99, 102, 241, 0.14) 0%, rgba(255, 255, 255, 0.03) 100%);
+      border-color: rgba(99, 102, 241, 0.6);
+      box-shadow: 0 16px 40px rgba(99, 102, 241, 0.25);
+    }
+    [data-theme="light"] .pricing-card.featured {
+      background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 100%);
+      border-color: #6366f1;
+      box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
+    }
+    .pc-badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+    }
+    .pc-badge.highlight {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+    }
+    .pc-badge.save {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .pc-badge.gold {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+    }
+    .pc-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .pc-price {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pc-price small {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+    }
+    .pc-sub {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+    .pc-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pc-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+    }
+    .pc-features li::before {
+      content: "✓";
+      color: #10b981;
+      font-weight: 700;
+    }
+    .btn-plan {
+      width: 100%;
+      padding: 11px 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 <body>
@@ -376,6 +550,7 @@
         <a href="#studio">Studio App</a>
         <a href="#how">How it works</a>
         <a href="#compare">Compare</a>
+        <a href="#pricing">Pricing</a>
         <a href="#specs">Specs</a>
       </div>
       <div class="nav-actions">
@@ -831,6 +1006,91 @@
     </div>
   </section>
 
+  <section class="section pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-label" data-reveal>BUDGET-FRIENDLY PLANS</div>
+      <h2 class="section-title" data-reveal data-reveal-delay="1">Affordable plans.<br><span class="text-gradient">Zero subscription traps.</span></h2>
+      <p class="section-desc" data-reveal data-reveal-delay="2">Pick the tier that fits your budget. All plans include the full 120 FPS Metal 3D folding engine, all 6 shader aesthetics, and instant hardware hinge tracking.</p>
+
+      <!-- Urgency Banner (Expiring Soon - No fixed countdown clock) -->
+      <div class="pricing-urgency-banner" data-reveal data-reveal-delay="3">
+        <div class="pub-flame">🔥</div>
+        <div class="pub-text">
+          <strong id="pricing-urgency-title">Special Launch Offer &mdash; Expiring Soon!</strong>
+          <span>Lock in early supporter pricing today before rates adjust to standard pricing.</span>
+        </div>
+        <span class="pub-badge">Limited Time Offer</span>
+      </div>
+
+      <!-- Pricing Cards Grid -->
+      <div class="pricing-grid" data-reveal data-reveal-delay="4">
+        <!-- Plan 1: Monthly -->
+        <div class="pricing-card">
+          <span class="pc-badge">MOST FLEXIBLE</span>
+          <h3 class="pc-title">Monthly Pass</h3>
+          <div class="pc-price">&#8377;<span id="disp-plan-monthly">49</span><small> / month</small></div>
+          <div class="pc-sub">Billed monthly &bull; Cancel anytime in 1-click</div>
+          <ul class="pc-features">
+            <li>Full 3D Metal Spatial Engine</li>
+            <li>All 6 Shader Aesthetics Included</li>
+            <li>Real-time Hardware Lid Tracking</li>
+            <li>Zero Battery Drain at Idle</li>
+            <li>Works Over Fullscreen &amp; Lock Screen</li>
+          </ul>
+          <a href="#download" class="btn-ghost btn-plan">Get Monthly</a>
+        </div>
+
+        <!-- Plan 2: 6-Month (Half-Yearly) -->
+        <div class="pricing-card">
+          <span class="pc-badge save">SAVE 33%</span>
+          <h3 class="pc-title">6-Month Pass</h3>
+          <div class="pc-price">&#8377;<span id="disp-plan-half-yearly">199</span><small> / 6 months</small></div>
+          <div class="pc-sub">~&#8377;33/mo &bull; Student &amp; Creator Favorite</div>
+          <ul class="pc-features">
+            <li>Everything in Monthly Pass</li>
+            <li>Continuous Priority Updates</li>
+            <li>6 Months Uninterrupted Access</li>
+            <li>macOS Sequoia &amp; Sonoma Optimized</li>
+            <li>Multi-Display Ready</li>
+          </ul>
+          <a href="#download" class="btn-ghost btn-plan">Get 6 Months</a>
+        </div>
+
+        <!-- Plan 3: 1 Year (Annual) - BEST VALUE -->
+        <div class="pricing-card featured">
+          <span class="pc-badge highlight">BEST VALUE &middot; SAVE 42%</span>
+          <h3 class="pc-title">Annual Pass</h3>
+          <div class="pc-price">&#8377;<span id="disp-plan-yearly">349</span><small> / year</small></div>
+          <div class="pc-sub">~&#8377;29/mo &bull; Less than &#8377;1 per day</div>
+          <ul class="pc-features">
+            <li>Everything in 6-Month Pass</li>
+            <li>Full ProMotion 120 FPS Engine</li>
+            <li>Priority Bug Fixes &amp; New Shaders</li>
+            <li>Direct VIP Creato4 Support</li>
+            <li>Save over 40% vs Monthly</li>
+          </ul>
+          <a href="#download" class="btn-primary btn-plan">Choose Annual (Best Value)</a>
+        </div>
+
+        <!-- Plan 4: Lifetime License -->
+        <div class="pricing-card" id="pricing-card-lifetime">
+          <span class="pc-badge gold">PAY ONCE &middot; OWN FOREVER</span>
+          <h3 class="pc-title">Lifetime License</h3>
+          <div class="pc-price">&#8377;<span id="disp-plan-lifetime">499</span><small> one-time</small></div>
+          <div class="pc-sub">No recurring subscriptions &bull; Own forever</div>
+          <ul class="pc-features">
+            <li>Pay Once, Never Pay Again</li>
+            <li>All Future Major Version Updates</li>
+            <li>Multi-Mac Device License Key</li>
+            <li>Permanent VIP Supporter Status</li>
+            <li>Zero Cloud &bull; 100% Offline Forever</li>
+          </ul>
+          <a href="#download" class="btn-ghost btn-plan">Get Lifetime Access</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section download-section" id="download">
     <div class="download-bg">
       <div class="dl-aurora dl-aurora-1"></div>
@@ -1229,6 +1489,35 @@
         if (v1) v1.classList.remove('active');
       }
     }
+
+    // ── Dynamic Pricing Plans Sync ────────────────────────────────
+    fetch(_API + '/config/public')
+      .then(res => res.json())
+      .then(cfg => {
+        if (cfg && cfg.plans) {
+          const p = cfg.plans;
+          if (p.monthly && document.getElementById('disp-plan-monthly')) {
+            document.getElementById('disp-plan-monthly').textContent = Math.round(p.monthly);
+          }
+          if (p.half_yearly && document.getElementById('disp-plan-half-yearly')) {
+            document.getElementById('disp-plan-half-yearly').textContent = Math.round(p.half_yearly);
+          }
+          if (p.yearly && document.getElementById('disp-plan-yearly')) {
+            document.getElementById('disp-plan-yearly').textContent = Math.round(p.yearly);
+          }
+          if (p.lifetime && document.getElementById('disp-plan-lifetime')) {
+            document.getElementById('disp-plan-lifetime').textContent = Math.round(p.lifetime);
+          }
+          if (p.urgency_text && document.getElementById('pricing-urgency-title')) {
+            document.getElementById('pricing-urgency-title').textContent = p.urgency_text;
+          }
+          const lifeCard = document.getElementById('pricing-card-lifetime');
+          if (lifeCard && p.lifetime_enabled === false) {
+            lifeCard.style.display = 'none';
+          }
+        }
+      })
+      .catch(() => {});
   </script>
 </body>
 </html>
