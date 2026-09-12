@@ -712,6 +712,54 @@ img { display: block; max-width: 100%; }
 }
 .dl-sub { font-size: 17px; color: var(--text-secondary); margin-bottom: 40px; }
 .dl-actions { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 40px; }
+.dl-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.btn-github-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.btn-github-dl:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.nav-github-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.nav-github-link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-hover);
+}
 .dl-meta { font-size: 13px; color: var(--text-dim); }
 
 .gatekeeper-note {

@@ -6,7 +6,9 @@ As you tilt your MacBook lid, DuoReveal anchors your real macOS screen into a st
 
 ## Download Public Beta
 
-- **Latest Release**: [Download DuoReveal-Beta.dmg](download/DuoReveal-Beta.dmg)
+- **Official GitHub Release Package**: [DuoReveal 1.0 Public Beta](https://github.com/Prince-Tagadiya/DuoReveal/releases/tag/v1.0-beta)
+- **Direct Download DMG**: [DuoReveal-Beta.dmg](https://github.com/Prince-Tagadiya/DuoReveal/releases/download/v1.0-beta/DuoReveal-Beta.dmg)
+- **Official Website**: [duoreveal.creato4.com](https://prince-tagadiya.github.io/DuoReveal-Website/)
 - **Requirements**: macOS 14.0 Sonoma, macOS 15.0 Sequoia, or newer (Apple Silicon M1/M2/M3/M4).
 
 ### First-Time Launch on macOS Sequoia
