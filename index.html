@@ -557,19 +557,19 @@
                 </div>
               </div>
 
-              <div class="step-card">
+              <div class="step-card highlight" id="step-card-1" onclick="switchGuideStep(1)" style="cursor: pointer;">
                 <div class="step-num">2</div>
                 <div class="step-body">
-                  <h4>Gatekeeper Protection Dialog</h4>
-                  <p>macOS may notify you: <br><em>&ldquo;DuoReveal was blocked to protect your Mac.&rdquo;</em><br>Click <strong>OK</strong> to dismiss the prompt.</p>
+                  <h4>Gatekeeper Alert &rarr; Click &ldquo;Done&rdquo;</h4>
+                  <p>macOS displays: <br><em>&ldquo;DuoReveal-Installer.pkg Not Opened&rdquo;</em>.<br>Click <strong>Done</strong> (do <strong>NOT</strong> click Move to Trash).</p>
                 </div>
               </div>
 
-              <div class="step-card highlight">
+              <div class="step-card highlight" id="step-card-2" onclick="switchGuideStep(2)" style="cursor: pointer;">
                 <div class="step-num">3</div>
                 <div class="step-body">
                   <h4>Click &ldquo;Open Anyway&rdquo; in Settings</h4>
-                  <p>Open <strong>System Settings</strong> &rarr; click <strong>Privacy &amp; Security</strong> in the sidebar &rarr; scroll down to <strong>Security</strong> &rarr; click the <strong>[Open Anyway]</strong> button (as highlighted in the preview).</p>
+                  <p>Open <strong>System Settings</strong> &rarr; click <strong>Privacy &amp; Security</strong> in the sidebar &rarr; scroll down to <strong>Security</strong> &rarr; click <strong>[Open Anyway]</strong>.</p>
                 </div>
               </div>
 
@@ -577,7 +577,7 @@
                 <div class="step-num">4</div>
                 <div class="step-body">
                   <h4>Confirm Touch ID / Password</h4>
-                  <p>Touch your Mac&rsquo;s Touch ID sensor or enter your login password. DuoReveal is now installed in <span class="mono">/Applications</span> and ready to reveal!</p>
+                  <p>Touch your Mac&rsquo;s Touch ID sensor or enter your login password. DuoReveal installs directly into <span class="mono">/Applications</span> and launches immediately!</p>
                 </div>
               </div>
 
@@ -587,8 +587,20 @@
               </div>
             </div>
 
-            <!-- Right Column: Window Screenshot with Interactive Highlight -->
+            <!-- Right Column: Window Screenshot with Interactive Switcher Tabs -->
             <div class="install-preview">
+              <!-- Switcher Tabs -->
+              <div class="preview-tabs">
+                <button type="button" class="preview-tab" id="tab-step1" onclick="switchGuideStep(1)">
+                  <span class="pt-num">1</span>
+                  <span>Step 1: Click &ldquo;Done&rdquo;</span>
+                </button>
+                <button type="button" class="preview-tab active" id="tab-step2" onclick="switchGuideStep(2)">
+                  <span class="pt-num">2</span>
+                  <span>Step 2: Click &ldquo;Open Anyway&rdquo;</span>
+                </button>
+              </div>
+
               <div class="macos-window-frame">
                 <div class="window-titlebar">
                   <div class="window-dots">
@@ -596,22 +608,22 @@
                     <span class="dot min"></span>
                     <span class="dot max"></span>
                   </div>
-                  <span class="window-title">Privacy &amp; Security &mdash; System Settings</span>
+                  <span class="window-title" id="guide-window-title">Privacy &amp; Security &mdash; System Settings</span>
                   <div class="window-spacer"></div>
                 </div>
                 <div class="window-content">
                   <div class="img-wrapper">
                     <img src="assets/gatekeeper-open-anyway.png" alt="macOS Privacy and Security Open Anyway button location for DuoReveal" class="guide-screenshot" id="gatekeeper-screenshot" />
-                    <div class="callout-box">
+                    <div class="callout-box" id="guide-callout">
                       <div class="callout-indicator">
                         <span class="callout-ping"></span>
-                        <span>👉 Click &ldquo;Open Anyway&rdquo;</span>
+                        <span id="callout-text">👉 Click &ldquo;Open Anyway&rdquo;</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="window-caption">
-                  <span>macOS Sequoia &bull; System Settings &gt; Privacy &amp; Security &gt; Security Section</span>
+                  <span id="guide-window-caption">macOS Sequoia &bull; System Settings &gt; Privacy &amp; Security &gt; Security Section</span>
                 </div>
               </div>
             </div>
@@ -706,6 +718,50 @@
     function dismissToast() {
       const toast = document.getElementById('download-toast');
       if (toast) toast.classList.remove('show');
+    }
+
+    function switchGuideStep(step) {
+      const img = document.getElementById('gatekeeper-screenshot');
+      const title = document.getElementById('guide-window-title');
+      const caption = document.getElementById('guide-window-caption');
+      const callout = document.getElementById('guide-callout');
+      const tab1 = document.getElementById('tab-step1');
+      const tab2 = document.getElementById('tab-step2');
+      const card1 = document.getElementById('step-card-1');
+      const card2 = document.getElementById('step-card-2');
+      const calloutText = document.getElementById('callout-text');
+
+      if (step === 1) {
+        if (tab1) tab1.classList.add('active');
+        if (tab2) tab2.classList.remove('active');
+        if (card1) card1.classList.add('highlight');
+        if (card2) card2.classList.remove('highlight');
+        if (img) img.src = 'assets/gatekeeper-not-opened-dialog.png';
+        if (title) title.textContent = 'macOS Gatekeeper Alert Dialog';
+        if (caption) caption.textContent = 'Step 1: Click "Done" (Do NOT click "Move to Trash")';
+        if (callout) {
+          callout.style.top = '78%';
+          callout.style.right = 'auto';
+          callout.style.left = '50%';
+          callout.style.transform = 'translateX(-50%)';
+        }
+        if (calloutText) calloutText.textContent = '👉 Click "Done" (not Trash!)';
+      } else {
+        if (tab2) tab2.classList.add('active');
+        if (tab1) tab1.classList.remove('active');
+        if (card2) card2.classList.add('highlight');
+        if (card1) card1.classList.remove('highlight');
+        if (img) img.src = 'assets/gatekeeper-open-anyway.png';
+        if (title) title.textContent = 'Privacy & Security — System Settings';
+        if (caption) caption.textContent = 'Step 2: System Settings > Privacy & Security > Click "Open Anyway"';
+        if (callout) {
+          callout.style.top = '57%';
+          callout.style.right = '5%';
+          callout.style.left = 'auto';
+          callout.style.transform = 'none';
+        }
+        if (calloutText) calloutText.textContent = '👉 Click "Open Anyway"';
+      }
     }
   </script>
 </body>

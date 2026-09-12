@@ -986,6 +986,47 @@ img { display: block; max-width: 100%; }
 .install-preview {
   position: relative;
 }
+.preview-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.preview-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.preview-tab:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.09);
+}
+.preview-tab.active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+.preview-tab .pt-num {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
 .macos-window-frame {
   background: #18181c;
   border: 1px solid rgba(255, 255, 255, 0.12);
