@@ -55,33 +55,49 @@
       <div class="aurora aurora-2"></div>
       <div class="grid-overlay"></div>
     </div>
-    <div class="container hero-container">
-      <div class="hero-badge" data-reveal>
-        <span class="badge-dot"></span>
-        <span>Public Beta &middot; Native macOS &amp; Metal</span>
+    <div class="container hero-split-layout">
+      <!-- Left Column: Same text as current -->
+      <div class="hero-left-col" data-reveal>
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Public Beta &middot; Native macOS &amp; Metal</span>
+        </div>
+        <h1 class="hero-title">
+          Your Screen.<br>
+          <span class="gradient-text">Floating in Space.</span>
+        </h1>
+        <p class="hero-sub">
+          As you tilt your MacBook lid, DuoReveal anchors your real desktop into a stationary 3D spatial plane. Hardware-native. Zero drain. Mathematically precise.
+        </p>
+        <div class="hero-actions">
+          <a href="#download" class="btn-primary" id="hero-download-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download for macOS &mdash; Free
+          </a>
+          <a href="https://github.com/Prince-Tagadiya/DuoReveal/releases/tag/v1.0.1" target="_blank" rel="noopener" class="btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub Package
+          </a>
+        </div>
+        <div class="hero-compat">
+          <span>macOS 14 Sonoma</span><span class="dot">&middot;</span>
+          <span>macOS 15 Sequoia</span><span class="dot">&middot;</span>
+          <span>Apple Silicon M1&ndash;M4</span>
+        </div>
       </div>
-      <h1 class="hero-title" data-reveal data-reveal-delay="1">
-        Your Screen.<br>
-        <span class="gradient-text">Floating in Space.</span>
-      </h1>
-      <p class="hero-sub" data-reveal data-reveal-delay="2">
-        As you tilt your MacBook lid, DuoReveal anchors your real desktop into a stationary<br>
-        3D spatial plane. Hardware-native. Zero drain. Mathematically precise.
-      </p>
-      <div class="hero-actions" data-reveal data-reveal-delay="3">
-        <a href="#download" class="btn-primary" id="hero-download-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download for macOS &mdash; Free
-        </a>
-        <a href="https://github.com/Prince-Tagadiya/DuoReveal/releases/tag/v1.0-beta" target="_blank" rel="noopener" class="btn-ghost">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub Package
-        </a>
-      </div>
-      <div class="hero-compat" data-reveal data-reveal-delay="4">
-        <span>macOS 14 Sonoma</span><span class="dot">&middot;</span>
-        <span>macOS 15 Sequoia</span><span class="dot">&middot;</span>
-        <span>Apple Silicon M1&ndash;M4</span>
+
+      <!-- Right Column: Main App Screenshot Window -->
+      <div class="hero-right-col" data-reveal data-reveal-delay="2">
+        <div class="hero-app-card">
+          <div class="hero-app-glow"></div>
+          <div class="hero-app-wrapper">
+            <img src="assets/app-hero-appearance.png" alt="DuoReveal Native macOS App Interface" class="hero-main-screenshot" />
+            <div class="hero-screenshot-overlay-pill">
+              <span class="pill-dot live"></span>
+              <span>Active Metal Shader Engine &middot; v1.0.1</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="macbook-scene" data-reveal data-reveal-delay="5">
@@ -225,13 +241,15 @@
           </div>
           <div class="window-controls">
             <div class="theme-switcher-pills">
-              <button class="theme-pill active" id="screenshot-appearance-btn" onclick="setScreenshotView('appearance')">Appearance</button>
+              <button class="theme-pill active" id="screenshot-appearance-btn" onclick="setScreenshotView('appearance')">Appearance Studio</button>
               <button class="theme-pill" id="screenshot-lid-btn" onclick="setScreenshotView('lid')">Lid Dynamics</button>
+              <button class="theme-pill" id="screenshot-light-btn" onclick="setScreenshotView('light')">Light Mode</button>
+              <button class="theme-pill" id="screenshot-dark-btn" onclick="setScreenshotView('dark')">Dark Mode</button>
             </div>
           </div>
         </div>
         <div class="window-body">
-          <img src="assets/app-screenshot.png" alt="DuoReveal Native macOS App Settings Studio" id="app-screenshot-img" class="app-screenshot" loading="lazy">
+          <img src="assets/app-hero-appearance.png" alt="DuoReveal Native macOS App Settings Studio" id="app-screenshot-img" class="app-screenshot" loading="lazy">
           <div class="screenshot-floating-badge badge-top-right">
             <span class="badge-dot pulse"></span>
             <span>Live Interactive Preview &middot; 105&deg;</span>
@@ -281,17 +299,20 @@
           <div class="studio-card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 3v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3"/><circle cx="12" cy="14" r="2"/><path d="M12 16v3"/></svg>
           </div>
-          <div class="studio-card-tag">DYNAMIC NOTCH HUD &amp; 1-CLICK UPDATES</div>
+          <div class="studio-card-tag">DYNAMIC NOTCH HUD &amp; 1-TAP UPDATES</div>
           <h3>Morphing Dynamic Island &amp; Instant Updates.</h3>
           <p>The Dynamic Notch HUD sits flush behind your MacBook camera bezel. It remains 100% concealed when you work, and fluidly drops down when you tilt the lid with real-time degrees (90&deg;, 75&deg;, 25&deg;).</p>
           <div class="notch-update-highlight">
-            <div class="nuh-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <strong>v1.0.1 In-App Update</strong></div>
-            <p>When an update is released, the Notch automatically expands in size to display an interactive update pill. Just tap the notch icon to download and install immediately right from the app &mdash; no hunting through websites.</p>
+            <div class="nuh-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <strong>v1.0.1 One-Tap Update Ready</strong></div>
+            <p>When an update is released, the Notch automatically expands in size to display an interactive update pill. Just tap the notch icon to download, install in-place, and relaunch immediately &mdash; zero manual DMG dragging.</p>
+            <div class="card-notch-preview">
+              <img src="assets/app-notch-hud.png" alt="DuoReveal Dynamic Notch HUD with One-Tap Update" class="card-notch-img" />
+            </div>
           </div>
         </div>
 
         <!-- Card 4: 6 Shader Engines & Optics -->
-        <div class="studio-card">
+        <div class="studio-card studio-card-wide">
           <div class="studio-card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
@@ -299,18 +320,24 @@
           <h3>6 Optical Shader Engines &amp; Live Sliders.</h3>
           <p>Choose between <strong>Precision Fold</strong>, <strong>Ghost Glass</strong>, <strong>Duo Fold</strong>, <strong>Roll Curve</strong>, <strong>Shutter</strong>, and <strong>Flex</strong>. Adjust Perspective taper, Depth Defocus Blur, Crease Shadows, and Tilt Multipliers in real-time with zero restart required.</p>
           <div class="shader-tags">
-            <span>Precision</span><span>Ghost</span><span>Duo</span><span>Roll</span><span>Shutter</span><span>Flex</span>
+            <span>Precision</span><span>Duo</span><span>Ghost</span><span>Roll</span><span>Shutter</span><span>Flex</span>
+          </div>
+          <div class="card-screenshot-wrapper">
+            <img src="assets/app-hero-appearance.png" alt="DuoReveal Appearance Studio with 6 Shaders" class="card-feature-img" loading="lazy" />
           </div>
         </div>
 
         <!-- Card 5: Safe Sleep & Lock Screen Recovery -->
-        <div class="studio-card">
+        <div class="studio-card studio-card-wide">
           <div class="studio-card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
-          <div class="studio-card-tag">BLACK SCREEN PROTECTION</div>
-          <h3>Safe Wake &amp; Lock Screen Recovery.</h3>
-          <p>Closing your lid to sleep no longer causes black flash artifacts on reopen. DuoReveal locks the last pristine desktop texture into memory before sleep, verifies wake luminescence, and includes a customizable Lock Screen backdrop timer for seamless waking.</p>
+          <div class="studio-card-tag">LID DYNAMICS &amp; SENSOR INTELLIGENCE</div>
+          <h3>Sub-Degree 0.01&deg; Telemetry &amp; Private Lock Screen.</h3>
+          <p>Closing your lid to sleep no longer causes black flash artifacts on reopen. DuoReveal locks the last pristine desktop texture into memory before sleep, tracks hinge angle with 0.01&deg; sub-degree precision, and includes a customizable Lock Screen backdrop timer.</p>
+          <div class="card-screenshot-wrapper">
+            <img src="assets/app-lid-behavior.png" alt="DuoReveal Lid Sensor Dynamics Calibration" class="card-feature-img" loading="lazy" />
+          </div>
         </div>
 
         <!-- Card 6: Zero Battery Impact -->
@@ -470,16 +497,16 @@
         <p class="dl-sub">Download DuoReveal for macOS. No account, no subscription, no nonsense.</p>
         <div class="dl-actions">
           <div class="dl-buttons-row">
-            <a href="https://github.com/Prince-Tagadiya/DuoReveal/releases/download/v1.0-beta/DuoReveal-Beta.dmg" class="btn-primary btn-xl" id="download-btn" download="DuoReveal-Beta.dmg">
+            <a href="download/DuoReveal-Beta.dmg" class="btn-primary btn-xl" id="download-btn" download="DuoReveal-Beta.dmg" onclick="trackDownload('direct_dmg')">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Download DuoReveal Beta (.dmg)
             </a>
-            <a href="https://github.com/Prince-Tagadiya/DuoReveal/releases/tag/v1.0-beta" target="_blank" rel="noopener" class="btn-github-dl btn-xl">
+            <a href="https://github.com/Prince-Tagadiya/DuoReveal/releases/tag/v1.0.1" target="_blank" rel="noopener" class="btn-github-dl btn-xl" onclick="trackDownload('github_release')">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               Download Package on GitHub
             </a>
           </div>
-          <span class="dl-meta">macOS 14.0 Sonoma &middot; macOS 15.0 Sequoia &middot; Apple Silicon M1&ndash;M4 &middot; 2.9 MB</span>
+          <span class="dl-meta">macOS 14.0 Sonoma &middot; macOS 15.0 Sequoia &middot; Apple Silicon M1&ndash;M4 &middot; 3.0 MB</span>
         </div>
         <div class="gatekeeper-note">
           <div class="gk-header">
@@ -512,7 +539,7 @@
           <div class="fn-col">
             <h5>GitHub</h5>
             <a href="https://github.com/Prince-Tagadiya/DuoReveal" target="_blank" rel="noopener">App Repository</a>
-            <a href="https://github.com/Prince-Tagadiya/DuoReveal/releases/tag/v1.0-beta" target="_blank" rel="noopener">Download Package (v1.0 Beta)</a>
+            <a href="https://github.com/Prince-Tagadiya/DuoReveal/releases/tag/v1.0.1" target="_blank" rel="noopener">Download Package (v1.0.1)</a>
             <a href="https://github.com/Prince-Tagadiya/DuoReveal-Website" target="_blank" rel="noopener">Website Repository</a>
             <a href="https://github.com/Prince-Tagadiya/DuoReveal/releases" target="_blank" rel="noopener">All Releases</a>
             <a href="mailto:princetagadiya11@gmail.com?subject=DuoReveal%20Beta%20Bug%20Report" class="report-bug-link">Report a Bug</a>
@@ -527,5 +554,31 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+    // ── Analytics tracking ──────────────────────────────────────────
+    const _API = '/api';
+    function _ping(event, source) {
+      try {
+        fetch(_API + '/stats/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ event, source }),
+          keepalive: true
+        }).catch(() => {});
+      } catch(e) {}
+    }
+    // Track page visit once per session
+    if (!sessionStorage.getItem('_duo_visited')) {
+      sessionStorage.setItem('_duo_visited', '1');
+      _ping('visit', 'website');
+    }
+    // Track hero download button
+    const _heroDl = document.getElementById('hero-download-btn');
+    if (_heroDl) _heroDl.addEventListener('click', () => trackDownload('hero'));
+
+    function trackDownload(source) {
+      _ping('download', source || 'website');
+    }
+  </script>
 </body>
 </html>
