@@ -1,0 +1,22 @@
+{
+  "beta_enabled": false,
+  "beta_end_date": null,
+  "payment_enabled": true,
+  "trial_enabled": true,
+  "trial_duration_days": 3,
+  "price": 29.0,
+  "currency": "INR",
+  "subscription_enabled": true,
+  "app_enabled": true,
+  "maintenance_mode": false,
+  "minimum_supported_version": "1.0.0",
+  "latest_version": "1.0.2",
+  "update_url": "https://prince-tagadiya.github.io/DuoReveal-Website/download/DuoReveal-Update.zip",
+  "announcement": null,
+  "plans": {
+    "monthly": 29.0,
+    "half_yearly": 99.0,
+    "yearly": 149.0,
+    "urgency_text": "Special Launch Offer — Expiring Soon!"
+  }
+}
