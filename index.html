@@ -483,9 +483,9 @@
     }
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-      max-width: 1060px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 980px;
       margin: 0 auto;
     }
     .pricing-card {
@@ -1098,7 +1098,7 @@
         <div class="pricing-card">
           <span class="pc-badge">MOST FLEXIBLE</span>
           <h3 class="pc-title">Monthly Pass</h3>
-          <div class="pc-price">&#8377;<span id="disp-plan-monthly">49</span><small> / month</small></div>
+          <div class="pc-price">&#8377;<span id="disp-plan-monthly">29</span><small> / month</small></div>
           <div class="pc-sub">Billed monthly &bull; Cancel anytime in 1-click</div>
           <ul class="pc-features">
             <li>Full 3D Metal Spatial Engine</li>
@@ -1112,10 +1112,10 @@
 
         <!-- Plan 2: 6-Month (Half-Yearly) -->
         <div class="pricing-card">
-          <span class="pc-badge save">SAVE 33%</span>
+          <span class="pc-badge save">POPULAR &middot; SAVE 43%</span>
           <h3 class="pc-title">6-Month Pass</h3>
-          <div class="pc-price">&#8377;<span id="disp-plan-half-yearly">199</span><small> / 6 months</small></div>
-          <div class="pc-sub">~&#8377;33/mo &bull; Student &amp; Creator Favorite</div>
+          <div class="pc-price">&#8377;<span id="disp-plan-half-yearly">99</span><small> / 6 months</small></div>
+          <div class="pc-sub">~&#8377;16/mo &bull; Student &amp; Creator Favorite</div>
           <ul class="pc-features">
             <li>Everything in Monthly Pass</li>
             <li>Continuous Priority Updates</li>
@@ -1128,34 +1128,18 @@
 
         <!-- Plan 3: 1 Year (Annual) - BEST VALUE -->
         <div class="pricing-card featured">
-          <span class="pc-badge highlight">BEST VALUE &middot; SAVE 42%</span>
+          <span class="pc-badge highlight">BEST VALUE &middot; SAVE 57%</span>
           <h3 class="pc-title">Annual Pass</h3>
-          <div class="pc-price">&#8377;<span id="disp-plan-yearly">349</span><small> / year</small></div>
-          <div class="pc-sub">~&#8377;29/mo &bull; Less than &#8377;1 per day</div>
+          <div class="pc-price">&#8377;<span id="disp-plan-yearly">149</span><small> / year</small></div>
+          <div class="pc-sub">~&#8377;12/mo &bull; Less than &#8377;0.50 per day</div>
           <ul class="pc-features">
             <li>Everything in 6-Month Pass</li>
             <li>Full ProMotion 120 FPS Engine</li>
             <li>Priority Bug Fixes &amp; New Shaders</li>
             <li>Direct VIP Creato4 Support</li>
-            <li>Save over 40% vs Monthly</li>
+            <li>Save over 55% vs Monthly</li>
           </ul>
           <button type="button" class="btn-primary btn-plan" onclick="openCheckoutModal('yearly', 'Annual Pass (Best Value)')">Choose Annual (Best Value)</button>
-        </div>
-
-        <!-- Plan 4: Lifetime License -->
-        <div class="pricing-card" id="pricing-card-lifetime">
-          <span class="pc-badge gold">PAY ONCE &middot; OWN FOREVER</span>
-          <h3 class="pc-title">Lifetime License</h3>
-          <div class="pc-price">&#8377;<span id="disp-plan-lifetime">499</span><small> one-time</small></div>
-          <div class="pc-sub">No recurring subscriptions &bull; Own forever</div>
-          <ul class="pc-features">
-            <li>Pay Once, Never Pay Again</li>
-            <li>All Future Major Version Updates</li>
-            <li>Multi-Mac Device License Key</li>
-            <li>Permanent VIP Supporter Status</li>
-            <li>Zero Cloud &bull; 100% Offline Forever</li>
-          </ul>
-          <button type="button" class="btn-ghost btn-plan" onclick="openCheckoutModal('lifetime', 'Lifetime License')">Get Lifetime Access</button>
         </div>
       </div>
     </div>
@@ -1660,15 +1644,8 @@
           if (p.yearly && document.getElementById('disp-plan-yearly')) {
             document.getElementById('disp-plan-yearly').textContent = Math.round(p.yearly);
           }
-          if (p.lifetime && document.getElementById('disp-plan-lifetime')) {
-            document.getElementById('disp-plan-lifetime').textContent = Math.round(p.lifetime);
-          }
           if (p.urgency_text && document.getElementById('pricing-urgency-title')) {
             document.getElementById('pricing-urgency-title').textContent = p.urgency_text;
-          }
-          const lifeCard = document.getElementById('pricing-card-lifetime');
-          if (lifeCard && p.lifetime_enabled === false) {
-            lifeCard.style.display = 'none';
           }
         }
       })
@@ -1676,7 +1653,7 @@
 
     // ── Razorpay Live Checkout & Device Activation Controller ─────
     const RAZORPAY_LIVE_KEY = 'rzp_live_TbF2T3PxIu4EAn';
-    let currentCheckoutPlan = { id: 'monthly', name: 'Monthly Pass', price: 49 };
+    let currentCheckoutPlan = { id: 'monthly', name: 'Monthly Pass', price: 29 };
 
     // Prefill installation ID from URL if navigated from the app notice: ?id=...
     const urlParams = new URLSearchParams(window.location.search);
@@ -1684,7 +1661,7 @@
 
     function openCheckoutModal(planId, planName) {
       const priceElem = document.getElementById('disp-plan-' + planId.replace('_', '-'));
-      const price = priceElem ? parseFloat(priceElem.textContent) : 49;
+      const price = priceElem ? parseFloat(priceElem.textContent) : 29;
       currentCheckoutPlan = { id: planId, name: planName, price: price };
 
       // If installation ID is already known (e.g. from app query string), directly initiate Razorpay
