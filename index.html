@@ -1078,9 +1078,9 @@
 
   <section class="section pricing-section" id="pricing">
     <div class="container">
-      <div class="section-label" data-reveal>BUDGET-FRIENDLY PLANS</div>
-      <h2 class="section-title" data-reveal data-reveal-delay="1">Affordable plans.<br><span class="text-gradient">Zero subscription traps.</span></h2>
-      <p class="section-desc" data-reveal data-reveal-delay="2">Pick the tier that fits your budget. All plans include the full 120 FPS Metal 3D folding engine, all 6 shader aesthetics, and instant hardware hinge tracking.</p>
+      <div class="section-label" data-reveal>BUDGET-FRIENDLY SUBSCRIPTIONS</div>
+      <h2 class="section-title" data-reveal data-reveal-delay="1">Transparent subscriptions.<br><span class="text-gradient">Cancel anytime in 1-click.</span></h2>
+      <p class="section-desc" data-reveal data-reveal-delay="2">Automated recurring billing via UPI AutoPay &amp; Cards. Pick the subscription tier that fits your budget.</p>
 
       <!-- Urgency Banner (Expiring Soon - No fixed countdown clock) -->
       <div class="pricing-urgency-banner" data-reveal data-reveal-delay="3">
@@ -1097,9 +1097,9 @@
         <!-- Plan 1: Monthly -->
         <div class="pricing-card">
           <span class="pc-badge">MOST FLEXIBLE</span>
-          <h3 class="pc-title">Monthly Pass</h3>
+          <h3 class="pc-title">Monthly Subscription</h3>
           <div class="pc-price">&#8377;<span id="disp-plan-monthly">29</span><small> / month</small></div>
-          <div class="pc-sub">Billed monthly &bull; Cancel anytime in 1-click</div>
+          <div class="pc-sub">UPI AutoPay &amp; Cards &bull; Cancel anytime in 1-click</div>
           <ul class="pc-features">
             <li>Full 3D Metal Spatial Engine</li>
             <li>All 6 Shader Aesthetics Included</li>
@@ -1107,15 +1107,15 @@
             <li>Zero Battery Drain at Idle</li>
             <li>Works Over Fullscreen &amp; Lock Screen</li>
           </ul>
-          <button type="button" class="btn-ghost btn-plan" onclick="openCheckoutModal('monthly', 'Monthly Pass')">Get Monthly</button>
+          <button type="button" class="btn-ghost btn-plan" onclick="openCheckoutModal('monthly', 'Monthly Subscription')">Subscribe Monthly (&#8377;29/mo)</button>
         </div>
 
         <!-- Plan 2: 6-Month (Half-Yearly) -->
         <div class="pricing-card">
           <span class="pc-badge save">POPULAR &middot; SAVE 43%</span>
-          <h3 class="pc-title">6-Month Pass</h3>
+          <h3 class="pc-title">6-Month Subscription</h3>
           <div class="pc-price">&#8377;<span id="disp-plan-half-yearly">99</span><small> / 6 months</small></div>
-          <div class="pc-sub">~&#8377;16/mo &bull; Student &amp; Creator Favorite</div>
+          <div class="pc-sub">~&#8377;16/mo &bull; Renews every 6 months &bull; Cancel anytime</div>
           <ul class="pc-features">
             <li>Everything in Monthly Pass</li>
             <li>Continuous Priority Updates</li>
@@ -1123,15 +1123,15 @@
             <li>macOS Sequoia &amp; Sonoma Optimized</li>
             <li>Multi-Display Ready</li>
           </ul>
-          <button type="button" class="btn-ghost btn-plan" onclick="openCheckoutModal('half_yearly', '6-Month Pass')">Get 6 Months</button>
+          <button type="button" class="btn-ghost btn-plan" onclick="openCheckoutModal('half_yearly', '6-Month Subscription')">Subscribe 6-Month (&#8377;99)</button>
         </div>
 
         <!-- Plan 3: 1 Year (Annual) - BEST VALUE -->
         <div class="pricing-card featured">
           <span class="pc-badge highlight">BEST VALUE &middot; SAVE 57%</span>
-          <h3 class="pc-title">Annual Pass</h3>
+          <h3 class="pc-title">Annual Subscription</h3>
           <div class="pc-price">&#8377;<span id="disp-plan-yearly">149</span><small> / year</small></div>
-          <div class="pc-sub">~&#8377;12/mo &bull; Less than &#8377;0.50 per day</div>
+          <div class="pc-sub">~&#8377;12/mo &bull; Renews yearly &bull; Less than &#8377;0.50/day</div>
           <ul class="pc-features">
             <li>Everything in 6-Month Pass</li>
             <li>Full ProMotion 120 FPS Engine</li>
@@ -1139,7 +1139,7 @@
             <li>Direct VIP Creato4 Support</li>
             <li>Save over 55% vs Monthly</li>
           </ul>
-          <button type="button" class="btn-primary btn-plan" onclick="openCheckoutModal('yearly', 'Annual Pass (Best Value)')">Choose Annual (Best Value)</button>
+          <button type="button" class="btn-primary btn-plan" onclick="openCheckoutModal('yearly', 'Annual Subscription (Best Value)')">Subscribe Annual (Best Value)</button>
         </div>
       </div>
     </div>
@@ -1714,11 +1714,12 @@
 
     async function executeRazorpayCheckout(planId, planName, installId, price) {
       const amountPaise = Math.round(price * 100);
+      let subscriptionId = '';
       let orderId = '';
 
-      // Try creating official order via backend
+      // 1. Attempt to create recurring Razorpay Subscription (AutoPay / recurring mandate)
       try {
-        const orderRes = await fetch(_API + '/payment/create-order', {
+        const subRes = await fetch(_API + '/payment/create-subscription', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -1726,12 +1727,33 @@
             installation_id: installId || 'web_checkout'
           })
         });
-        if (orderRes.ok) {
-          const data = await orderRes.json();
-          if (data && data.order_id) orderId = data.order_id;
+        if (subRes.ok) {
+          const sData = await subRes.json();
+          if (sData && sData.subscription_id) subscriptionId = sData.subscription_id;
         }
       } catch (err) {
-        console.warn('Backend order creation offline, using standard checkout fallback:', err);
+        console.warn('Backend subscription call failed, trying order fallback:', err);
+      }
+
+      // 2. Fallback to order creation if subscription API was unreachable
+      if (!subscriptionId) {
+        try {
+          const orderRes = await fetch(_API + '/payment/create-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              plan_id: planId,
+              installation_id: installId || 'web_checkout'
+            })
+          });
+          if (orderRes.ok) {
+            const data = await orderRes.json();
+            if (data && data.subscription_id) subscriptionId = data.subscription_id;
+            if (data && data.order_id) orderId = data.order_id;
+          }
+        } catch (err) {
+          console.warn('Backend order creation offline, using standard fallback:', err);
+        }
       }
 
       if (typeof Razorpay === 'undefined') {
@@ -1741,10 +1763,8 @@
 
       const options = {
         key: RAZORPAY_LIVE_KEY,
-        amount: amountPaise,
-        currency: 'INR',
-        name: 'DuoReveal Pro (Creato4 Labs)',
-        description: planName + ' — 120 FPS Metal Spatial Folding',
+        name: 'DuoReveal Pro (Creato4 Lab)',
+        description: planName + ' (Auto-Renewing Subscription)',
         image: 'assets/apple-touch-icon.png',
         handler: function (response) {
           verifyPaymentOnServer(response, planId, installId, planName);
@@ -1759,12 +1779,20 @@
           installation_id: installId || 'web_checkout'
         },
         theme: {
-          color: '#4f46e5'
+          color: '#6366f1'
         }
       };
 
-      if (orderId && !orderId.startsWith('order_fallback_')) {
-        options.order_id = orderId;
+      if (subscriptionId) {
+        // True Razorpay Subscription: Presents UPI AutoPay & Recurring Cards
+        options.subscription_id = subscriptionId;
+        options.recurring = true;
+      } else {
+        options.amount = amountPaise;
+        options.currency = 'INR';
+        if (orderId && !orderId.startsWith('order_fallback_')) {
+          options.order_id = orderId;
+        }
       }
 
       const rzp = new Razorpay(options);
@@ -1783,6 +1811,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             razorpay_order_id: response.razorpay_order_id,
+            razorpay_subscription_id: response.razorpay_subscription_id,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,
             installation_id: installId,
