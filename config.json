@@ -10,7 +10,7 @@
   "app_enabled": true,
   "maintenance_mode": false,
   "minimum_supported_version": "1.0.0",
-  "latest_version": "1.0.8",
+  "latest_version": "1.0.9",
   "update_url": "https://prince-tagadiya.github.io/DuoReveal-Website/download/DuoReveal-Update.zip",
   "announcement": null,
   "plans": {
