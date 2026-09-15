@@ -12,7 +12,7 @@
   "minimum_supported_version": "1.0.0",
   "latest_version": "1.1.0",
   "update_url": "https://prince-tagadiya.github.io/DuoReveal-Website/download/DuoReveal-Update.zip",
-  "announcement": null,
+  "announcement": "v1.1.0 — Smaller menu bar icon, smoother fold interruption, What's New in update banner, and Test button alignment fix.",
   "plans": {
     "monthly": 29.0,
     "half_yearly": 99.0,
